@@ -1,0 +1,32 @@
+<div class="container">
+    <button mat-raised-button color="primary">Incluir</button>
+    <mat-form-field appearance="fill">
+      <mat-label>Filtrar</mat-label>
+      <input matInput (keyup)="applyFilter($event)">
+    </mat-form-field>
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+      <ng-container matColumnDef="matricula">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Matrícula</mat-header-cell>
+        <mat-cell *matCellDef="let aluno">{{ aluno.matricula }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="nome">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>
+        <mat-cell *matCellDef="let aluno">{{ aluno.nome }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="acoes">
+        <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+        <mat-cell *matCellDef="let aluno">
+          <button mat-icon-button (click)="editarAluno(aluno.matricula)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="excluirAluno(aluno.matricula)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+  </div>
+  

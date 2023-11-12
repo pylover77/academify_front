@@ -1,0 +1,51 @@
+.main__container {
+    overflow: hidden;
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    background-color: #161f25;
+    color: white;
+    position: relative;
+    margin: 0;
+
+    h1 {
+        font-size: 2rem;
+        margin: auto;
+        z-index: 1;
+    }
+
+    &::before,
+    &::after {
+        content: "🌟 🌟 🌟";
+        position: absolute;
+        color: white;
+        font-size: 2rem;
+        opacity: 0.3;
+    }
+
+    &::before {
+        left: 10%;
+        top: 10%;
+        animation: falling-quotes 5s linear infinite;
+    }
+
+    &::after {
+        right: 10%;
+        top: 20%;
+        animation: falling-quotes 5s linear infinite 2s;
+    }
+}
+
+@keyframes falling-quotes {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(50vh);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
